@@ -8,24 +8,23 @@
     <link rel="stylesheet" href="css/style.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <!-- Using Crimson Pro for headings (elegant serif) and Work Sans for body (clean sans-serif) -->
-    <link href="https://fonts.googleapis.com/css2?family=Crimson+Pro:wght@400;600;700&family=Work+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Crimson+Pro:wght@400;600;700&family=Work+Sans:wght@300;400;450;500;600&display=swap" rel="stylesheet">
 </head>
 <body>
     <!-- Navigation -->
     <nav class="navbar" id="navbar">
         <div class="nav-container">
             <a href="#home" class="logo">ROHITH</a>
-            
-            <!-- Desktop Navigation -->
+
             <ul class="nav-menu" id="navMenu">
                 <li><a href="#about" class="nav-link">About</a></li>
+                <li><a href="#experience" class="nav-link">Experience</a></li>
+                <li><a href="#education" class="nav-link">Education</a></li>
                 <li><a href="#projects" class="nav-link">Projects</a></li>
                 <li><a href="#skills" class="nav-link">Skills</a></li>
                 <li><a href="#contact" class="nav-link">Contact</a></li>
             </ul>
 
-            <!-- Social Icons in Navbar -->
             <div class="nav-socials">
                 <a href="https://github.com/yourusername" target="_blank" aria-label="GitHub" class="social-icon">
                     <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
@@ -47,7 +46,6 @@
                 </a>
             </div>
 
-            <!-- Mobile Menu Toggle -->
             <button class="menu-toggle" id="menuToggle" aria-label="Toggle menu">
                 <span></span>
                 <span></span>
@@ -60,21 +58,23 @@
     <section class="hero" id="home">
         <div class="container">
             <div class="hero-content">
-                <h1 class="hero-name">ROHITH UPPUNUTHULA</h1>
+                <p class="hero-greeting">Hello, I'm</p>
+                <h1 class="hero-name">Rohith<br>Uppunuthula</h1>
                 <div class="hero-roles">
                     <span class="role-item">Full-Stack Developer</span>
-                    <span class="role-divider">•</span>
+                    <span class="role-divider"></span>
                     <span class="role-item">Django Developer</span>
-                    <span class="role-divider">•</span>
+                    <span class="role-divider"></span>
                     <span class="role-item">Web Developer</span>
                 </div>
-                <p class="hero-tagline">Learning in public, building with purpose, improving one project at a time. Student today — growing into a solid engineer through consistency, not hype.</p>
+                <p class="hero-tagline">Learning in public, building with purpose, improving one project at a time. Student today, solid engineer tomorrow.</p>
                 <div class="hero-cta">
                     <a href="#contact" class="btn btn-primary">Let's Connect</a>
                     <a href="#projects" class="btn btn-secondary">View Work</a>
                 </div>
             </div>
         </div>
+        <div class="scroll-indicator">Scroll</div>
     </section>
 
     <!-- About Section -->
@@ -82,23 +82,22 @@
         <div class="container">
             <div class="about-content">
                 <div class="about-image">
-                    <!-- TODO: Replace with your actual photo -->
                     <div class="image-placeholder">
-                        <svg width="120" height="120" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1">
+                        <svg width="80" height="80" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1">
                             <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path>
                             <circle cx="12" cy="7" r="4"></circle>
                         </svg>
                     </div>
-                    <!-- <img src="images/profile.jpg" alt="Rohith Uppunuthula"> -->
                 </div>
                 <div class="about-text">
-                    <h2 class="section-title">About Me</h2>
+                    <span class="section-label">About Me</span>
+                    <h2 class="section-title">Crafting digital experiences with code</h2>
                     <div class="about-bio">
-                        <p>I'm an undergraduate student who's seriously focused on becoming a strong software developer through consistent, hands-on work. I didn't get into tech just to watch tutorials — I learn by building. Most of my time goes into creating real projects, understanding how systems work behind the scenes, and improving step by step. I care more about practical skills than hype, and I treat every project as a chance to level up.</p>
-                        
-                        <p>My main interests are backend development, full-stack web applications, and writing clean, logical code. I work with technologies like Python, Django, Java, and modern web tools such as HTML, CSS, and JavaScript. I enjoy connecting frontend and backend to turn ideas into working products. Along the way, I focus on fundamentals, problem-solving, and writing code that's simple, readable, and actually useful.</p>
-                        
-                        <p>What drives me is growth. I'm always looking at what I built yesterday and thinking, "How can I do this better?" I like challenging myself with tougher projects, learning from mistakes, and improving consistently rather than chasing shortcuts. My goal is to become an engineer who can build reliable, real-world software — and this portfolio is a record of that journey.</p>
+                        <p>I'm an undergraduate student who's seriously focused on becoming a strong software developer through consistent, hands-on work. I didn't get into tech just to watch tutorials — I learn by building. Most of my time goes into creating real projects, understanding how systems work behind the scenes, and improving step by step.</p>
+
+                        <p>My main interests are backend development, full-stack web applications, and writing clean, logical code. I work with technologies like Python, Django, Java, and modern web tools such as HTML, CSS, and JavaScript. I enjoy connecting frontend and backend to turn ideas into working products.</p>
+
+                        <p>What drives me is growth. I'm always looking at what I built yesterday and thinking, "How can I do this better?" My goal is to become an engineer who can build reliable, real-world software — and this portfolio is a record of that journey.</p>
                     </div>
                     <div class="about-location">
                         <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
@@ -107,7 +106,6 @@
                         </svg>
                         <span>Warangal, Telangana, India</span>
                     </div>
-                    <!-- TODO: Enable this button when you upload your resume -->
                     <a href="#" class="btn btn-outline disabled" disabled>
                         <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                             <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
@@ -121,41 +119,205 @@
         </div>
     </section>
 
+    <!-- Experience Section -->
+    <section class="experience" id="experience">
+        <div class="container">
+            <div class="container-narrow">
+                <span class="section-label">Experience</span>
+                <h2 class="section-title">Where I've Worked</h2>
+                <p class="section-subtitle" style="text-align: left; margin-left: 0;">Building real-world experience through projects and learning opportunities.</p>
+            </div>
+
+            <div class="timeline" data-aos="fade-up">
+                <!-- Experience Item 1 -->
+                <div class="timeline-item">
+                    <div class="timeline-header">
+                        <span class="timeline-date">2024 - Present</span>
+                    </div>
+                    <h3 class="timeline-title">Freelance Web Developer</h3>
+                    <p class="timeline-subtitle">Self-Employed</p>
+                    <div class="timeline-location">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path>
+                            <circle cx="12" cy="10" r="3"></circle>
+                        </svg>
+                        Remote
+                    </div>
+                    <div class="timeline-description">
+                        <p>Building custom web solutions for clients while honing my skills in full-stack development.</p>
+                        <ul>
+                            <li>Developing responsive and user-friendly websites</li>
+                            <li>Working with Django for backend development</li>
+                            <li>Creating REST APIs and integrating third-party services</li>
+                            <li>Managing projects from concept to deployment</li>
+                        </ul>
+                    </div>
+                    <div class="timeline-tags">
+                        <span class="timeline-tag">Django</span>
+                        <span class="timeline-tag">Python</span>
+                        <span class="timeline-tag">JavaScript</span>
+                        <span class="timeline-tag">REST APIs</span>
+                    </div>
+                </div>
+
+                <!-- Experience Item 2 -->
+                <div class="timeline-item">
+                    <div class="timeline-header">
+                        <span class="timeline-date">2023 - 2024</span>
+                    </div>
+                    <h3 class="timeline-title">Personal Projects & Learning</h3>
+                    <p class="timeline-subtitle">Self-Directed Learning</p>
+                    <div class="timeline-location">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path>
+                            <circle cx="12" cy="10" r="3"></circle>
+                        </svg>
+                        Warangal, India
+                    </div>
+                    <div class="timeline-description">
+                        <p>Dedicated time to building substantial projects and mastering fundamentals.</p>
+                        <ul>
+                            <li>Built a multi-vendor e-commerce platform from scratch</li>
+                            <li>Learned Django framework in depth through practical application</li>
+                            <li>Practiced data structures and algorithms in Python</li>
+                            <li>Contributed to open source projects</li>
+                        </ul>
+                    </div>
+                    <div class="timeline-tags">
+                        <span class="timeline-tag">Full-Stack</span>
+                        <span class="timeline-tag">E-commerce</span>
+                        <span class="timeline-tag">Open Source</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Education Section -->
+    <section class="education" id="education">
+        <div class="container">
+            <div class="container-narrow">
+                <span class="section-label">Education</span>
+                <h2 class="section-title">Academic Journey</h2>
+                <p class="section-subtitle" style="text-align: left; margin-left: 0;">Building a strong foundation in computer science and engineering.</p>
+            </div>
+
+            <div class="timeline" data-aos="fade-up">
+                <!-- Education Item 1 -->
+                <div class="timeline-item">
+                    <div class="timeline-header">
+                        <span class="timeline-date">2022 - 2026</span>
+                    </div>
+                    <h3 class="timeline-title">Bachelor of Technology</h3>
+                    <p class="timeline-subtitle">Computer Science & Engineering</p>
+                    <div class="timeline-location">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path>
+                            <circle cx="12" cy="10" r="3"></circle>
+                        </svg>
+                        Warangal, Telangana
+                    </div>
+                    <div class="timeline-description">
+                        <p>Pursuing a comprehensive education in computer science with focus on software engineering.</p>
+                        <ul>
+                            <li>Core coursework in Data Structures, Algorithms, and DBMS</li>
+                            <li>Specialized in Web Development and Software Engineering</li>
+                            <li>Active participation in coding clubs and hackathons</li>
+                            <li>Building projects alongside academic curriculum</li>
+                        </ul>
+                    </div>
+                    <div class="timeline-tags">
+                        <span class="timeline-tag">Computer Science</span>
+                        <span class="timeline-tag">Software Engineering</span>
+                        <span class="timeline-tag">Web Development</span>
+                    </div>
+                </div>
+
+                <!-- Education Item 2 -->
+                <div class="timeline-item">
+                    <div class="timeline-header">
+                        <span class="timeline-date">2020 - 2022</span>
+                    </div>
+                    <h3 class="timeline-title">Intermediate (12th Grade)</h3>
+                    <p class="timeline-subtitle">MPC - Mathematics, Physics, Chemistry</p>
+                    <div class="timeline-location">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path>
+                            <circle cx="12" cy="10" r="3"></circle>
+                        </svg>
+                        Telangana, India
+                    </div>
+                    <div class="timeline-description">
+                        <p>Completed intermediate education with strong foundation in mathematics and sciences.</p>
+                        <ul>
+                            <li>Focused on analytical and problem-solving skills</li>
+                            <li>Developed interest in programming and technology</li>
+                            <li>Self-taught basics of programming during this period</li>
+                        </ul>
+                    </div>
+                    <div class="timeline-tags">
+                        <span class="timeline-tag">Mathematics</span>
+                        <span class="timeline-tag">Physics</span>
+                        <span class="timeline-tag">Chemistry</span>
+                    </div>
+                </div>
+
+                <!-- Education Item 3 -->
+                <div class="timeline-item">
+                    <div class="timeline-header">
+                        <span class="timeline-date">2020</span>
+                    </div>
+                    <h3 class="timeline-title">Secondary School (10th Grade)</h3>
+                    <p class="timeline-subtitle">State Board</p>
+                    <div class="timeline-location">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path>
+                            <circle cx="12" cy="10" r="3"></circle>
+                        </svg>
+                        Telangana, India
+                    </div>
+                    <div class="timeline-description">
+                        <p>Completed secondary education with strong academic performance, laying the groundwork for future technical studies.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
     <!-- Projects Section -->
     <section class="projects" id="projects">
         <div class="container">
-            <h2 class="section-title centered">Selected Projects</h2>
+            <div style="text-align: center;">
+                <span class="section-label" style="justify-content: center;">Projects</span>
+            </div>
+            <h2 class="section-title centered">Selected Work</h2>
             <p class="section-subtitle">Building real-world applications with clean code and purpose</p>
-            
+
             <div class="projects-grid">
                 <!-- Project 1 -->
                 <article class="project-card" data-aos="fade-up">
                     <div class="project-image">
-                        <!-- TODO: Replace with actual project screenshot -->
                         <div class="image-placeholder-project">
-                            <svg width="80" height="80" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1">
+                            <svg width="60" height="60" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1">
                                 <rect x="3" y="3" width="18" height="18" rx="2" ry="2"></rect>
                                 <circle cx="8.5" cy="8.5" r="1.5"></circle>
                                 <polyline points="21 15 16 10 5 21"></polyline>
                             </svg>
                         </div>
-                        <!-- <img src="images/project-1.jpg" alt="Multi-Vendor Ecommerce Website"> -->
                     </div>
                     <div class="project-content">
-                        <span class="project-tag">FULL-STACK</span>
-                        <h3 class="project-title">Multi-Vendor Ecommerce Website</h3>
-                        <p class="project-description">Fully-featured Multi-vendor Restaurant Marketplace website with location-based search, nearby restaurants, and many more complex functionalities.</p>
-                        
-                        <!-- TODO: Add your tech stack here -->
+                        <span class="project-tag">Full-Stack</span>
+                        <h3 class="project-title">Multi-Vendor Ecommerce</h3>
+                        <p class="project-description">Fully-featured Multi-vendor Restaurant Marketplace website with location-based search, nearby restaurants, and complex functionalities.</p>
+
                         <div class="project-tech">
                             <span class="tech-badge">Django</span>
                             <span class="tech-badge">Python</span>
                             <span class="tech-badge">JavaScript</span>
-                            <!-- Add more tech badges as needed -->
+                            <span class="tech-badge">PostgreSQL</span>
                         </div>
-                        
+
                         <div class="project-links">
-                            <!-- TODO: Add your actual project links -->
                             <a href="#" class="project-link disabled">
                                 <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                                     <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path>
@@ -174,14 +336,11 @@
                     </div>
                 </article>
 
-                <!-- TODO: Add more project cards here -->
-                <!-- Copy the structure above and modify with your project details -->
-                
-                <!-- Example: Project 2 Template (currently hidden - remove 'hidden' class when ready) -->
+                <!-- Project 2 Template -->
                 <article class="project-card hidden" data-aos="fade-up" data-aos-delay="100">
                     <div class="project-image">
                         <div class="image-placeholder-project">
-                            <svg width="80" height="80" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1">
+                            <svg width="60" height="60" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1">
                                 <rect x="3" y="3" width="18" height="18" rx="2" ry="2"></rect>
                                 <circle cx="8.5" cy="8.5" r="1.5"></circle>
                                 <polyline points="21 15 16 10 5 21"></polyline>
@@ -189,7 +348,7 @@
                         </div>
                     </div>
                     <div class="project-content">
-                        <span class="project-tag">CATEGORY</span>
+                        <span class="project-tag">Category</span>
                         <h3 class="project-title">Project Name</h3>
                         <p class="project-description">Project description goes here.</p>
                         <div class="project-tech">
@@ -202,7 +361,6 @@
                         </div>
                     </div>
                 </article>
-
             </div>
         </div>
     </section>
@@ -210,41 +368,63 @@
     <!-- Skills Section -->
     <section class="skills" id="skills">
         <div class="container">
+            <div style="text-align: center;">
+                <span class="section-label" style="justify-content: center;">Skills</span>
+            </div>
             <h2 class="section-title centered">Technologies & Tools</h2>
-            <p class="section-subtitle">Core technologies I work with</p>
-            
+            <p class="section-subtitle">Core technologies I work with daily</p>
+
             <div class="skills-grid">
                 <!-- Frontend -->
                 <div class="skill-category" data-aos="fade-up">
+                    <div class="skill-category-icon">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <polyline points="16 18 22 12 16 6"></polyline>
+                            <polyline points="8 6 2 12 8 18"></polyline>
+                        </svg>
+                    </div>
                     <h3 class="skill-category-title">Frontend</h3>
                     <ul class="skill-list">
                         <li>HTML5</li>
                         <li>CSS3</li>
                         <li>JavaScript</li>
-                        <!-- TODO: Add more frontend skills here -->
+                        <li>Responsive Design</li>
                     </ul>
                 </div>
 
                 <!-- Backend -->
                 <div class="skill-category" data-aos="fade-up" data-aos-delay="100">
+                    <div class="skill-category-icon">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <rect x="2" y="3" width="20" height="14" rx="2" ry="2"></rect>
+                            <line x1="8" y1="21" x2="16" y2="21"></line>
+                            <line x1="12" y1="17" x2="12" y2="21"></line>
+                        </svg>
+                    </div>
                     <h3 class="skill-category-title">Backend</h3>
                     <ul class="skill-list">
                         <li>Python</li>
                         <li>Django</li>
                         <li>Django REST Framework</li>
                         <li>Java</li>
-                        <!-- TODO: Add more backend skills here -->
                     </ul>
                 </div>
 
                 <!-- Database & Tools -->
                 <div class="skill-category" data-aos="fade-up" data-aos-delay="200">
+                    <div class="skill-category-icon">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <ellipse cx="12" cy="5" rx="9" ry="3"></ellipse>
+                            <path d="M21 12c0 1.66-4 3-9 3s-9-1.34-9-3"></path>
+                            <path d="M3 5v14c0 1.66 4 3 9 3s9-1.34 9-3V5"></path>
+                        </svg>
+                    </div>
                     <h3 class="skill-category-title">Database & Tools</h3>
                     <ul class="skill-list">
-                        <li>SQLite3</li>
-                        <li>Git</li>
+                        <li>PostgreSQL</li>
+                        <li>SQLite</li>
+                        <li>Git & GitHub</li>
                         <li>VS Code</li>
-                        <!-- TODO: Add more tools here -->
                     </ul>
                 </div>
             </div>
@@ -254,33 +434,35 @@
     <!-- Contact Section -->
     <section class="contact" id="contact">
         <div class="container">
+            <div style="text-align: center;">
+                <span class="section-label" style="justify-content: center;">Contact</span>
+            </div>
             <h2 class="section-title centered">Get In Touch</h2>
-            <p class="section-subtitle">Have a project in mind? Let's talk</p>
-            
+            <p class="section-subtitle">Have a project in mind or want to collaborate? Let's talk.</p>
+
             <form class="contact-form" id="contactForm">
                 <div class="form-group">
                     <label for="name">Name</label>
-                    <input type="text" id="name" name="name" required>
-                </div>
-                
-                <div class="form-group">
-                    <label for="email">Email</label>
-                    <input type="email" id="email" name="email" required>
-                </div>
-                
-                <div class="form-group">
-                    <label for="message">Message</label>
-                    <textarea id="message" name="message" rows="6" required></textarea>
+                    <input type="text" id="name" name="name" placeholder="Your name" required>
                 </div>
 
-                <!-- Hidden field for Web3Forms -->
+                <div class="form-group">
+                    <label for="email">Email</label>
+                    <input type="email" id="email" name="email" placeholder="your@email.com" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="message">Message</label>
+                    <textarea id="message" name="message" rows="6" placeholder="Tell me about your project..." required></textarea>
+                </div>
+
                 <input type="hidden" name="access_key" value="04552b51-7f92-48ce-9cda-fd7610032fe3">
-                
+
                 <button type="submit" class="btn btn-primary submit-btn">
                     <span class="btn-text">Send Message</span>
                     <span class="btn-loading hidden">Sending...</span>
                 </button>
-                
+
                 <div class="form-message hidden" id="formMessage"></div>
             </form>
         </div>
@@ -289,32 +471,38 @@
     <!-- Footer -->
     <footer class="footer">
         <div class="container">
-            <div class="footer-socials">
-                <a href="https://github.com/yourusername" target="_blank" aria-label="GitHub" class="social-icon">
-                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                        <path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"></path>
-                    </svg>
-                </a>
-                <a href="https://linkedin.com/in/yourusername" target="_blank" aria-label="LinkedIn" class="social-icon">
-                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                        <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"></path>
-                        <rect x="2" y="9" width="4" height="12"></rect>
-                        <circle cx="4" cy="4" r="2"></circle>
-                    </svg>
-                </a>
-                <a href="https://twitter.com/yourusername" target="_blank" aria-label="Twitter" class="social-icon">
-                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                        <path d="M23 3a10.9 10.9 0 0 1-3.14 1.53 4.48 4.48 0 0 0-7.86 3v1A10.66 10.66 0 0 1 3 4s-4 9 5 13a11.64 11.64 0 0 1-7 2c9 5 20 0 20-11.5a4.5 4.5 0 0 0-.08-.83A7.72 7.72 0 0 0 23 3z"></path>
-                    </svg>
-                </a>
-                <a href="mailto:your.email@example.com" aria-label="Email" class="social-icon">
-                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                        <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path>
-                        <polyline points="22,6 12,13 2,6"></polyline>
-                    </svg>
-                </a>
+            <div class="footer-content">
+                <span class="footer-logo">ROHITH</span>
+                <p class="footer-tagline">Building digital experiences with clean code and thoughtful design.</p>
+
+                <div class="footer-socials">
+                    <a href="https://github.com/yourusername" target="_blank" aria-label="GitHub" class="social-icon">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"></path>
+                        </svg>
+                    </a>
+                    <a href="https://linkedin.com/in/yourusername" target="_blank" aria-label="LinkedIn" class="social-icon">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"></path>
+                            <rect x="2" y="9" width="4" height="12"></rect>
+                            <circle cx="4" cy="4" r="2"></circle>
+                        </svg>
+                    </a>
+                    <a href="https://twitter.com/yourusername" target="_blank" aria-label="Twitter" class="social-icon">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M23 3a10.9 10.9 0 0 1-3.14 1.53 4.48 4.48 0 0 0-7.86 3v1A10.66 10.66 0 0 1 3 4s-4 9 5 13a11.64 11.64 0 0 1-7 2c9 5 20 0 20-11.5a4.5 4.5 0 0 0-.08-.83A7.72 7.72 0 0 0 23 3z"></path>
+                        </svg>
+                    </a>
+                    <a href="mailto:your.email@example.com" aria-label="Email" class="social-icon">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path>
+                            <polyline points="22,6 12,13 2,6"></polyline>
+                        </svg>
+                    </a>
+                </div>
+
+                <p class="copyright">&copy; 2025 Rohith Uppunuthula. All rights reserved.</p>
             </div>
-            <p class="copyright">© 2025 Rohith Uppunuthula. All rights reserved.</p>
         </div>
     </footer>
 
