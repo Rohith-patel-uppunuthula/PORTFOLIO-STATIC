@@ -1,5 +1,5 @@
 // ========================================
-// MINIMALIST PORTFOLIO - JAVASCRIPT
+// GOD-TIER MINIMALIST PORTFOLIO - JAVASCRIPT
 // ========================================
 
 // ========================================
@@ -11,14 +11,13 @@ let lastScroll = 0;
 
 window.addEventListener('scroll', () => {
     const currentScroll = window.pageYOffset;
-    
-    // Add/remove scrolled class for navbar style
+
     if (currentScroll > 50) {
         navbar.classList.add('scrolled');
     } else {
         navbar.classList.remove('scrolled');
     }
-    
+
     lastScroll = currentScroll;
 });
 
@@ -33,21 +32,22 @@ const navLinks = document.querySelectorAll('.nav-link');
 menuToggle.addEventListener('click', () => {
     menuToggle.classList.toggle('active');
     navMenu.classList.toggle('active');
+    document.body.style.overflow = navMenu.classList.contains('active') ? 'hidden' : '';
 });
 
-// Close mobile menu when clicking on a link
 navLinks.forEach(link => {
     link.addEventListener('click', () => {
         menuToggle.classList.remove('active');
         navMenu.classList.remove('active');
+        document.body.style.overflow = '';
     });
 });
 
-// Close mobile menu when clicking outside
 document.addEventListener('click', (e) => {
     if (!e.target.closest('.nav-container')) {
         menuToggle.classList.remove('active');
         navMenu.classList.remove('active');
+        document.body.style.overflow = '';
     }
 });
 
@@ -58,16 +58,16 @@ document.addEventListener('click', (e) => {
 document.querySelectorAll('a[href^="#"]').forEach(anchor => {
     anchor.addEventListener('click', function (e) {
         e.preventDefault();
-        
+
         const targetId = this.getAttribute('href');
         if (targetId === '#') return;
-        
+
         const targetSection = document.querySelector(targetId);
-        
+
         if (targetSection) {
             const navbarHeight = navbar.offsetHeight;
             const targetPosition = targetSection.offsetTop - navbarHeight;
-            
+
             window.scrollTo({
                 top: targetPosition,
                 behavior: 'smooth'
@@ -77,10 +77,9 @@ document.querySelectorAll('a[href^="#"]').forEach(anchor => {
 });
 
 // ========================================
-// 4. SCROLL ANIMATIONS (AOS - Animate On Scroll)
+// 4. SCROLL ANIMATIONS (AOS)
 // ========================================
 
-// Simple Intersection Observer for fade-in animations
 const observerOptions = {
     threshold: 0.1,
     rootMargin: '0px 0px -50px 0px'
@@ -89,21 +88,77 @@ const observerOptions = {
 const observer = new IntersectionObserver((entries) => {
     entries.forEach(entry => {
         if (entry.isIntersecting) {
-            entry.target.classList.add('aos-animate');
-            
-            // Optional: Stop observing after animation
+            // Add staggered delay for timeline items
+            if (entry.target.classList.contains('timeline-item')) {
+                const items = entry.target.parentElement.querySelectorAll('.timeline-item');
+                items.forEach((item, index) => {
+                    setTimeout(() => {
+                        item.classList.add('aos-animate');
+                    }, index * 150);
+                });
+            } else {
+                entry.target.classList.add('aos-animate');
+            }
             observer.unobserve(entry.target);
         }
     });
 }, observerOptions);
 
-// Observe all elements with [data-aos] attribute
+// Observe elements with [data-aos] and timeline items
 document.querySelectorAll('[data-aos]').forEach(element => {
     observer.observe(element);
 });
 
+// Also observe timeline containers for staggered animation
+document.querySelectorAll('.timeline').forEach(timeline => {
+    const firstItem = timeline.querySelector('.timeline-item');
+    if (firstItem) {
+        observer.observe(firstItem);
+    }
+});
+
 // ========================================
-// 5. CONTACT FORM HANDLING WITH WEB3FORMS
+// 5. TIMELINE ITEM ANIMATIONS
+// ========================================
+
+const timelineObserver = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+        if (entry.isIntersecting) {
+            entry.target.classList.add('aos-animate');
+        }
+    });
+}, {
+    threshold: 0.2,
+    rootMargin: '0px 0px -100px 0px'
+});
+
+document.querySelectorAll('.timeline-item').forEach(item => {
+    timelineObserver.observe(item);
+});
+
+// Add animation styles for timeline items
+const timelineStyle = document.createElement('style');
+timelineStyle.textContent = `
+    .timeline-item {
+        opacity: 0;
+        transform: translateX(-20px);
+        transition: opacity 0.6s ease, transform 0.6s ease;
+    }
+
+    .timeline-item.aos-animate {
+        opacity: 1;
+        transform: translateX(0);
+    }
+
+    .timeline-item:nth-child(1) { transition-delay: 0s; }
+    .timeline-item:nth-child(2) { transition-delay: 0.15s; }
+    .timeline-item:nth-child(3) { transition-delay: 0.3s; }
+    .timeline-item:nth-child(4) { transition-delay: 0.45s; }
+`;
+document.head.appendChild(timelineStyle);
+
+// ========================================
+// 6. CONTACT FORM HANDLING
 // ========================================
 
 const contactForm = document.getElementById('contactForm');
@@ -114,20 +169,17 @@ const formMessage = document.getElementById('formMessage');
 
 contactForm.addEventListener('submit', async (e) => {
     e.preventDefault();
-    
-    // Get form data
+
     const formData = new FormData(contactForm);
     const object = Object.fromEntries(formData);
     const json = JSON.stringify(object);
-    
-    // Show loading state
+
     btnText.classList.add('hidden');
     btnLoading.classList.remove('hidden');
     submitBtn.disabled = true;
     formMessage.classList.add('hidden');
-    
+
     try {
-        // Send to Web3Forms
         const response = await fetch('https://api.web3forms.com/submit', {
             method: 'POST',
             headers: {
@@ -136,24 +188,20 @@ contactForm.addEventListener('submit', async (e) => {
             },
             body: json
         });
-        
+
         const result = await response.json();
-        
-        // Reset button state
+
         btnText.classList.remove('hidden');
         btnLoading.classList.add('hidden');
         submitBtn.disabled = false;
-        
+
         if (response.ok && result.success) {
-            // Success
-            showFormMessage('success', 'Thank you! Your message has been sent successfully. I\'ll get back to you soon.');
+            showFormMessage('success', 'Thank you! Your message has been sent. I\'ll get back to you soon.');
             contactForm.reset();
         } else {
-            // Error from Web3Forms
             showFormMessage('error', result.message || 'Something went wrong. Please try again.');
         }
     } catch (error) {
-        // Network or other error
         btnText.classList.remove('hidden');
         btnLoading.classList.add('hidden');
         submitBtn.disabled = false;
@@ -162,13 +210,11 @@ contactForm.addEventListener('submit', async (e) => {
     }
 });
 
-// Helper function to display form messages
 function showFormMessage(type, message) {
     formMessage.textContent = message;
     formMessage.className = `form-message ${type}`;
     formMessage.classList.remove('hidden');
-    
-    // Auto-hide success message after 5 seconds
+
     if (type === 'success') {
         setTimeout(() => {
             formMessage.classList.add('hidden');
@@ -177,18 +223,16 @@ function showFormMessage(type, message) {
 }
 
 // ========================================
-// 6. FORM VALIDATION
+// 7. FORM VALIDATION
 // ========================================
 
 const formInputs = contactForm.querySelectorAll('input, textarea');
 
 formInputs.forEach(input => {
-    // Real-time validation feedback
     input.addEventListener('blur', () => {
         validateInput(input);
     });
-    
-    // Remove error state when user starts typing
+
     input.addEventListener('input', () => {
         if (input.classList.contains('error')) {
             input.classList.remove('error');
@@ -201,8 +245,7 @@ function validateInput(input) {
         input.classList.add('error');
         return false;
     }
-    
-    // Email validation
+
     if (input.type === 'email') {
         const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
         if (!emailRegex.test(input.value)) {
@@ -210,24 +253,28 @@ function validateInput(input) {
             return false;
         }
     }
-    
+
     input.classList.remove('error');
     return true;
 }
 
-// Add error styling to CSS
-const style = document.createElement('style');
-style.textContent = `
+const validationStyle = document.createElement('style');
+validationStyle.textContent = `
     .form-group input.error,
     .form-group textarea.error {
-        border-color: #f5a3a3;
-        background-color: #fef9f9;
+        border-color: #f87171;
+        background-color: #fef2f2;
+    }
+
+    .form-group input.error:focus,
+    .form-group textarea.error:focus {
+        box-shadow: 0 0 0 3px rgba(248, 113, 113, 0.1);
     }
 `;
-document.head.appendChild(style);
+document.head.appendChild(validationStyle);
 
 // ========================================
-// 7. SCROLL TO TOP ON LOGO CLICK
+// 8. SCROLL TO TOP ON LOGO CLICK
 // ========================================
 
 document.querySelector('.logo').addEventListener('click', (e) => {
@@ -237,31 +284,12 @@ document.querySelector('.logo').addEventListener('click', (e) => {
             top: 0,
             behavior: 'smooth'
         });
-        // Update URL without scrolling
         history.pushState(null, null, window.location.pathname);
     }
 });
 
 // ========================================
-// 8. LAZY LOADING IMAGES (when you add them)
-// ========================================
-
-// This will work when you add actual images
-if ('loading' in HTMLImageElement.prototype) {
-    // Browser supports lazy loading
-    const images = document.querySelectorAll('img[loading="lazy"]');
-    images.forEach(img => {
-        img.src = img.dataset.src;
-    });
-} else {
-    // Fallback for browsers that don't support lazy loading
-    const script = document.createElement('script');
-    script.src = 'https://cdnjs.cloudflare.com/ajax/libs/lazysizes/5.3.2/lazysizes.min.js';
-    document.body.appendChild(script);
-}
-
-// ========================================
-// 9. PERFORMANCE: DEBOUNCE SCROLL EVENTS
+// 9. PERFORMANCE: DEBOUNCE
 // ========================================
 
 function debounce(func, wait = 10) {
@@ -276,79 +304,21 @@ function debounce(func, wait = 10) {
     };
 }
 
-// Apply debounce to scroll handler if needed for performance
-const debouncedScroll = debounce(() => {
-    // Any additional scroll-based functionality
-}, 10);
-
-window.addEventListener('scroll', debouncedScroll);
-
 // ========================================
-// 10. ACCESSIBILITY: KEYBOARD NAVIGATION
+// 10. ACTIVE NAV LINK HIGHLIGHTING
 // ========================================
 
-// Trap focus in mobile menu when open
-const focusableElements = 'a[href], button:not([disabled]), input:not([disabled])';
-
-menuToggle.addEventListener('keydown', (e) => {
-    if (e.key === 'Enter' || e.key === ' ') {
-        e.preventDefault();
-        menuToggle.click();
-    }
-});
-
-// ========================================
-// 11. PAGE LOAD ANIMATION
-// ========================================
-
-window.addEventListener('load', () => {
-    document.body.classList.add('loaded');
-});
-
-// Add CSS for page load
-const loadStyle = document.createElement('style');
-loadStyle.textContent = `
-    body {
-        opacity: 0;
-        animation: fadeIn 0.5s ease-in forwards;
-    }
-    
-    body.loaded {
-        opacity: 1;
-    }
-    
-    @keyframes fadeIn {
-        to {
-            opacity: 1;
-        }
-    }
-`;
-document.head.appendChild(loadStyle);
-
-// ========================================
-// 12. CONSOLE MESSAGE (Easter Egg)
-// ========================================
-
-console.log('%c👋 Hey there!', 'font-size: 20px; font-weight: bold;');
-console.log('%cInterested in how this was built? Check out the code!', 'font-size: 14px; color: #666;');
-console.log('%cBuilt with vanilla HTML, CSS, and JavaScript', 'font-size: 12px; color: #999;');
-
-// ========================================
-// 13. ACTIVE NAV LINK HIGHLIGHTING
-// ========================================
-
-// Highlight current section in navigation
 const sections = document.querySelectorAll('section[id]');
 
 function highlightNavLink() {
     const scrollPosition = window.scrollY + navbar.offsetHeight + 100;
-    
+
     sections.forEach(section => {
         const sectionTop = section.offsetTop;
         const sectionHeight = section.offsetHeight;
         const sectionId = section.getAttribute('id');
         const navLink = document.querySelector(`.nav-link[href="#${sectionId}"]`);
-        
+
         if (scrollPosition >= sectionTop && scrollPosition < sectionTop + sectionHeight) {
             navLinks.forEach(link => link.classList.remove('active'));
             if (navLink) navLink.classList.add('active');
@@ -358,18 +328,89 @@ function highlightNavLink() {
 
 window.addEventListener('scroll', debounce(highlightNavLink, 10));
 
-// Add active link styling
-const navStyle = document.createElement('style');
-navStyle.textContent = `
-    .nav-link.active {
-        color: var(--color-hover);
+// ========================================
+// 11. KEYBOARD NAVIGATION
+// ========================================
+
+menuToggle.addEventListener('keydown', (e) => {
+    if (e.key === 'Enter' || e.key === ' ') {
+        e.preventDefault();
+        menuToggle.click();
     }
-    
-    .nav-link.active::after {
-        width: 100%;
+});
+
+// ========================================
+// 12. PAGE LOAD ANIMATION
+// ========================================
+
+window.addEventListener('load', () => {
+    document.body.classList.add('loaded');
+});
+
+const loadStyle = document.createElement('style');
+loadStyle.textContent = `
+    body {
+        opacity: 0;
+        transition: opacity 0.4s ease;
+    }
+
+    body.loaded {
+        opacity: 1;
     }
 `;
-document.head.appendChild(navStyle);
+document.head.appendChild(loadStyle);
+
+// ========================================
+// 13. SKILL CATEGORY HOVER EFFECT
+// ========================================
+
+document.querySelectorAll('.skill-category').forEach(category => {
+    category.addEventListener('mouseenter', function() {
+        this.style.transform = 'translateY(-4px)';
+    });
+
+    category.addEventListener('mouseleave', function() {
+        this.style.transform = 'translateY(0)';
+    });
+});
+
+// ========================================
+// 14. CONSOLE MESSAGE
+// ========================================
+
+console.log('%cHey there!', 'font-size: 20px; font-weight: bold; color: #0D0D0D;');
+console.log('%cInterested in the code? Check out the source!', 'font-size: 14px; color: #525252;');
+console.log('%cBuilt with vanilla HTML, CSS, and JavaScript', 'font-size: 12px; color: #8A8A8A;');
+
+// ========================================
+// 15. LAZY LOADING IMAGES
+// ========================================
+
+if ('loading' in HTMLImageElement.prototype) {
+    const images = document.querySelectorAll('img[loading="lazy"]');
+    images.forEach(img => {
+        if (img.dataset.src) {
+            img.src = img.dataset.src;
+        }
+    });
+}
+
+// ========================================
+// 16. SCROLL INDICATOR FADE
+// ========================================
+
+const scrollIndicator = document.querySelector('.scroll-indicator');
+if (scrollIndicator) {
+    window.addEventListener('scroll', debounce(() => {
+        if (window.scrollY > 100) {
+            scrollIndicator.style.opacity = '0';
+            scrollIndicator.style.pointerEvents = 'none';
+        } else {
+            scrollIndicator.style.opacity = '1';
+            scrollIndicator.style.pointerEvents = 'auto';
+        }
+    }, 10));
+}
 
 // ========================================
 // END OF SCRIPT
