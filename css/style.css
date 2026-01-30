@@ -1769,6 +1769,374 @@ p {
 }
 
 /* ========================================
+   12B. CERTIFICATIONS SECTION
+   ======================================== */
+
+.certifications {
+    padding: var(--space-24) 0;
+    background: var(--color-bg);
+}
+
+.cert-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: var(--space-8);
+}
+
+.cert-card {
+    background: var(--color-bg-elevated);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-lg);
+    overflow: hidden;
+    transition: all var(--transition-base);
+    position: relative;
+}
+
+.cert-card:hover {
+    transform: translateY(-6px);
+    box-shadow: var(--shadow-xl);
+    border-color: var(--color-border-hover);
+}
+
+.cert-image {
+    width: 100%;
+    aspect-ratio: 4/3;
+    overflow: hidden;
+    position: relative;
+    background: var(--color-accent);
+    cursor: pointer;
+}
+
+.cert-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform var(--transition-slow);
+    position: relative;
+    z-index: 1;
+}
+
+.cert-card:hover .cert-image img {
+    transform: scale(1.05);
+}
+
+/* Show placeholder when image fails to load */
+.cert-image-placeholder {
+    position: absolute;
+    inset: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: var(--space-3);
+    color: var(--color-text-tertiary);
+    background: linear-gradient(
+        135deg,
+        var(--color-accent) 0%,
+        var(--color-border-subtle) 50%,
+        var(--color-accent) 100%
+    );
+    transition: all var(--transition-base);
+}
+
+.cert-image-placeholder span {
+    font-size: var(--text-xs);
+    font-weight: 500;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+}
+
+.cert-card:hover .cert-image-placeholder {
+    background: linear-gradient(
+        135deg,
+        var(--color-border-subtle) 0%,
+        var(--color-accent) 50%,
+        var(--color-border-subtle) 100%
+    );
+}
+
+/* Lightbox overlay on image hover */
+.cert-image::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(
+        to top,
+        rgba(10, 10, 10, 0.4) 0%,
+        transparent 50%
+    );
+    opacity: 0;
+    transition: opacity var(--transition-base);
+    z-index: 2;
+    pointer-events: none;
+}
+
+.cert-card:hover .cert-image::after {
+    opacity: 1;
+}
+
+/* Expand icon on hover */
+.cert-image::before {
+    content: '';
+    position: absolute;
+    top: var(--space-3);
+    right: var(--space-3);
+    width: 32px;
+    height: 32px;
+    background: rgba(255, 255, 255, 0.9);
+    border-radius: var(--radius-sm);
+    z-index: 3;
+    opacity: 0;
+    transform: scale(0.8);
+    transition: all var(--transition-fast);
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 24 24' fill='none' stroke='%230A0A0A' stroke-width='2'%3E%3Cpolyline points='15 3 21 3 21 9'/%3E%3Cpolyline points='9 21 3 21 3 15'/%3E%3Cline x1='21' y1='3' x2='14' y2='10'/%3E%3Cline x1='3' y1='21' x2='10' y2='14'/%3E%3C/svg%3E");
+    background-repeat: no-repeat;
+    background-position: center;
+    pointer-events: none;
+}
+
+.cert-card:hover .cert-image::before {
+    opacity: 1;
+    transform: scale(1);
+}
+
+.cert-content {
+    padding: var(--space-5) var(--space-6);
+}
+
+.cert-date {
+    font-size: var(--text-xs);
+    font-weight: 500;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    color: var(--color-text-tertiary);
+    background: var(--color-accent);
+    padding: var(--space-1) var(--space-3);
+    border-radius: var(--radius-sm);
+    display: inline-block;
+    margin-bottom: var(--space-3);
+}
+
+.cert-title {
+    font-family: var(--font-heading);
+    font-size: var(--text-lg);
+    font-weight: 600;
+    color: var(--color-text-primary);
+    letter-spacing: -0.02em;
+    margin-bottom: var(--space-2);
+    transition: color var(--transition-fast);
+}
+
+.cert-card:hover .cert-title {
+    color: var(--color-text-secondary);
+}
+
+.cert-issuer {
+    font-size: var(--text-sm);
+    color: var(--color-text-tertiary);
+    font-weight: 450;
+}
+
+/* ========================================
+   12C. ACHIEVEMENTS SECTION
+   ======================================== */
+
+.achievements {
+    padding: var(--space-24) 0;
+    background: var(--color-bg-elevated);
+}
+
+.achieve-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: var(--space-8);
+}
+
+.achieve-card {
+    background: var(--color-bg);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-lg);
+    overflow: hidden;
+    transition: all var(--transition-base);
+    position: relative;
+}
+
+.achieve-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 3px;
+    background: linear-gradient(90deg, transparent, var(--color-text-primary), transparent);
+    transform: scaleX(0);
+    transition: transform var(--transition-base);
+}
+
+.achieve-card:hover::before {
+    transform: scaleX(1);
+}
+
+.achieve-card:hover {
+    transform: translateY(-6px);
+    box-shadow: var(--shadow-xl);
+    border-color: var(--color-border-hover);
+}
+
+.achieve-image {
+    width: 100%;
+    aspect-ratio: 16/10;
+    overflow: hidden;
+    position: relative;
+    background: var(--color-accent);
+    cursor: pointer;
+}
+
+.achieve-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform var(--transition-slow);
+    position: relative;
+    z-index: 1;
+}
+
+.achieve-card:hover .achieve-image img {
+    transform: scale(1.05);
+}
+
+/* Show placeholder when image fails to load */
+.achieve-image-placeholder {
+    position: absolute;
+    inset: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: var(--space-3);
+    color: var(--color-text-tertiary);
+    background: linear-gradient(
+        135deg,
+        var(--color-accent) 0%,
+        var(--color-border-subtle) 50%,
+        var(--color-accent) 100%
+    );
+    transition: all var(--transition-base);
+}
+
+.achieve-image-placeholder span {
+    font-size: var(--text-xs);
+    font-weight: 500;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+}
+
+.achieve-card:hover .achieve-image-placeholder {
+    background: linear-gradient(
+        135deg,
+        var(--color-border-subtle) 0%,
+        var(--color-accent) 50%,
+        var(--color-border-subtle) 100%
+    );
+}
+
+/* Gradient overlay on hover */
+.achieve-image::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(
+        to top,
+        rgba(10, 10, 10, 0.4) 0%,
+        transparent 50%
+    );
+    opacity: 0;
+    transition: opacity var(--transition-base);
+    z-index: 2;
+    pointer-events: none;
+}
+
+.achieve-card:hover .achieve-image::after {
+    opacity: 1;
+}
+
+/* Expand icon */
+.achieve-image::before {
+    content: '';
+    position: absolute;
+    top: var(--space-3);
+    right: var(--space-3);
+    width: 32px;
+    height: 32px;
+    background: rgba(255, 255, 255, 0.9);
+    border-radius: var(--radius-sm);
+    z-index: 3;
+    opacity: 0;
+    transform: scale(0.8);
+    transition: all var(--transition-fast);
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 24 24' fill='none' stroke='%230A0A0A' stroke-width='2'%3E%3Cpolyline points='15 3 21 3 21 9'/%3E%3Cpolyline points='9 21 3 21 3 15'/%3E%3Cline x1='21' y1='3' x2='14' y2='10'/%3E%3Cline x1='3' y1='21' x2='10' y2='14'/%3E%3C/svg%3E");
+    background-repeat: no-repeat;
+    background-position: center;
+    pointer-events: none;
+}
+
+.achieve-card:hover .achieve-image::before {
+    opacity: 1;
+    transform: scale(1);
+}
+
+.achieve-content {
+    padding: var(--space-5) var(--space-6);
+}
+
+.achieve-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: var(--space-2);
+    font-size: var(--text-xs);
+    font-weight: 600;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    color: var(--color-text-tertiary);
+    margin-bottom: var(--space-3);
+    padding: var(--space-1) var(--space-3);
+    background: var(--color-accent);
+    border-radius: var(--radius-sm);
+}
+
+.achieve-badge svg {
+    flex-shrink: 0;
+}
+
+.achieve-title {
+    font-family: var(--font-heading);
+    font-size: var(--text-lg);
+    font-weight: 600;
+    color: var(--color-text-primary);
+    letter-spacing: -0.02em;
+    margin-bottom: var(--space-3);
+    transition: color var(--transition-fast);
+}
+
+.achieve-card:hover .achieve-title {
+    color: var(--color-text-secondary);
+}
+
+.achieve-description {
+    font-size: var(--text-sm);
+    color: var(--color-text-secondary);
+    line-height: 1.7;
+    margin-bottom: var(--space-4);
+}
+
+.achieve-year {
+    font-size: var(--text-xs);
+    font-weight: 500;
+    color: var(--color-text-tertiary);
+    font-variant-numeric: tabular-nums;
+}
+
+/* ========================================
    13. CONTACT SECTION
    ======================================== */
 
@@ -2269,6 +2637,11 @@ p {
     .projects-grid {
         gap: var(--space-10);
     }
+
+    .cert-grid,
+    .achieve-grid {
+        gap: var(--space-10);
+    }
 }
 
 /* Desktop to Tablet (1024px - 1199px) */
@@ -2377,6 +2750,18 @@ p {
     .project-card {
         max-width: 600px;
         margin: 0 auto;
+    }
+
+    /* Certifications */
+    .cert-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: var(--space-6);
+    }
+
+    /* Achievements */
+    .achieve-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: var(--space-6);
     }
 
     /* Contact */
@@ -2786,6 +3171,62 @@ p {
         padding: 2px 6px;
     }
 
+    /* Certifications */
+    .certifications {
+        padding: var(--space-16) 0;
+    }
+
+    .cert-grid {
+        grid-template-columns: 1fr;
+        gap: var(--space-5);
+    }
+
+    .cert-card {
+        max-width: 100%;
+    }
+
+    .cert-image {
+        aspect-ratio: 16/10;
+    }
+
+    .cert-content {
+        padding: var(--space-4) var(--space-5);
+    }
+
+    .cert-title {
+        font-size: var(--text-base);
+    }
+
+    .cert-issuer {
+        font-size: var(--text-xs);
+    }
+
+    /* Achievements */
+    .achievements {
+        padding: var(--space-16) 0;
+    }
+
+    .achieve-grid {
+        grid-template-columns: 1fr;
+        gap: var(--space-5);
+    }
+
+    .achieve-card {
+        max-width: 100%;
+    }
+
+    .achieve-content {
+        padding: var(--space-4) var(--space-5);
+    }
+
+    .achieve-title {
+        font-size: var(--text-base);
+    }
+
+    .achieve-description {
+        font-size: var(--text-sm);
+    }
+
     /* LeetCode Banner */
     .leetcode-banner {
         padding: var(--space-5);
@@ -2960,6 +3401,36 @@ p {
     /* Skills */
     .skill-category {
         padding: var(--space-5);
+    }
+
+    /* Certifications */
+    .cert-image {
+        aspect-ratio: 3/2;
+    }
+
+    .cert-content {
+        padding: var(--space-3) var(--space-4);
+    }
+
+    .cert-title {
+        font-size: var(--text-sm);
+    }
+
+    /* Achievements */
+    .achieve-image {
+        aspect-ratio: 16/9;
+    }
+
+    .achieve-content {
+        padding: var(--space-3) var(--space-4);
+    }
+
+    .achieve-title {
+        font-size: var(--text-sm);
+    }
+
+    .achieve-description {
+        font-size: var(--text-xs);
     }
 
     /* Contact */
